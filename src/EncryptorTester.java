@@ -4,6 +4,7 @@ public class EncryptorTester
 {
     public static void main(String[] args)
     {
+        /*
         // --------------------------------
         // ---- TEST PART A: fillBlock ----
         // --------------------------------
@@ -97,8 +98,10 @@ public class EncryptorTester
             print2DArray(actual4);
         }
 
+*/
+    /*
         // UNCOMMENT THE SECTIONS BELOW TO TEST EACH PART
-/*
+
     // -----------------------------------
     //   ---- TEST PART B: encryptBlock ----
     //   -----------------------------------
@@ -146,7 +149,7 @@ public class EncryptorTester
       System.out.println("  ACTUAL: " + actualEncryptedBlock3);
     }
 */
-/*   
+
     // -------------------------------------
     // ---- TEST PART C: encryptMessage ----
     // -------------------------------------
@@ -219,8 +222,8 @@ public class EncryptorTester
       System.out.println("EXPECTED: " + expectedEncrypted5);
       System.out.println("  ACTUAL: " + actualEncrypted5);
     }
-*/
-/*    
+
+/*
     // -------------------------------------
     // ---- TEST PART D: decryptMessage ----
     // -------------------------------------

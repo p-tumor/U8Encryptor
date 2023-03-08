@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Encryptor
 {
     /** A two-dimensional array of single-character strings, instantiated in the constructor */
@@ -44,6 +46,35 @@ public class Encryptor
                 if(strs[i] == null) strs[i] = "A";
             }
         }
+    }
+    /** Extracts encrypted string from letterBlock in column-major order.
+     *
+     *  Precondition: letterBlock has been filled
+     *
+     *  @return  the encrypted string from letterBlock
+     */
+    public String encryptBlock()
+    {
+        StringBuilder s = new StringBuilder();
+        for(int col = 0; col < numCols; col++){
+            for(int row = 0; row < numRows; row++){
+                s.append(letterBlock[row][col]);
+            }
+        }
+        return s.toString();
+    }
+    /** Encrypts a message.
+     *
+     *  @param message the string to be encrypted
+     *
+     *  @return  the encrypted message; if message is the empty string,
+     *           returns the empty string
+     */
+    public String encryptMessage(String message)
+    {
+        if(message.equals("")) return "";
+        fillBlock(message);
+        return encryptBlock();
     }
 
 }
