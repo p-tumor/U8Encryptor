@@ -44,6 +44,7 @@ public class Encryptor
         for(String[] strs: letterBlock){
             for(int i = 0; i < strs.length;i++){
                 if(strs[i] == null) strs[i] = "A";
+                if(strs[i].equals("")) strs[i] = "A";
             }
         }
     }
@@ -72,9 +73,16 @@ public class Encryptor
      */
     public String encryptMessage(String message)
     {
+        StringBuilder s = new StringBuilder();
         if(message.equals("")) return "";
-        fillBlock(message);
-        return encryptBlock();
+        for(StringBuilder str = new StringBuilder(message); str.length() > 0; str.delete(0,numCols*numRows)) {
+            System.out.println("str......."+str.toString());
+            EncryptorTester.print2DArray(letterBlock);
+            fillBlock(str.toString());
+            s.append(encryptBlock());
+
+        }
+        return s.toString();
     }
 
 }
