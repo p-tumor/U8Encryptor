@@ -73,16 +73,14 @@ public class Encryptor
      */
     public String encryptMessage(String message)
     {
-        StringBuilder s = new StringBuilder();
+        StringBuilder result = new StringBuilder();
         if(message.equals("")) return "";
-        for(StringBuilder str = new StringBuilder(message); str.length() > 0; str.delete(0,numCols*numRows)) {
-            System.out.println("str......."+str.toString());
-            EncryptorTester.print2DArray(letterBlock);
+        for(StringBuilder str = new StringBuilder(message); str.length() > 0;str.delete(0,numCols*numRows)) {
+            letterBlock = new String[numRows][numCols];
             fillBlock(str.toString());
-            s.append(encryptBlock());
-
+            result.append(encryptBlock());
         }
-        return s.toString();
+        return result.toString();
     }
 
 }
