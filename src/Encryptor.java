@@ -80,6 +80,53 @@ public class Encryptor
             fillBlock(str.toString());
             result.append(encryptBlock());
         }
+        letterBlock = new String[numRows][numCols];
+        return result.toString();
+    }
+    /**  Decrypts an encrypted message. All filler 'A's that may have been
+     *   added during encryption will be removed, so this assumes that the
+     *   original message (BEFORE it was encrypted) did NOT end in a capital A!
+     *
+     *   NOTE! When you are decrypting an encrypted message,
+     *         be sure that you have initialized your Encryptor object
+     *         with the same row/column used to encrypted the message! (i.e.
+     *         the “encryption key” that is necessary for successful decryption)
+     *         This is outlined in the precondition below.
+     *
+     *   Precondition: the Encryptor object being used for decryption has been
+     *                 initialized with the same number of rows and columns
+     *                 as was used for the Encryptor object used for encryption.
+     *
+     *   @param encryptedMessage  the encrypted message to decrypt
+     *
+     *   @return  the decrypted, original message (which had been encrypted)
+     *
+     *   TIP: Feel free to create other helper methods as you see fit
+     *        (e.g. a method to decrypt each section of the decrypted message)
+     */
+    public String decryptMessage(String encryptedMessage)
+    {
+        StringBuilder result = new StringBuilder();
+        int letter = 0;
+        letterBlock = new String[numRows][numCols];
+        for(StringBuilder str = new StringBuilder(encryptedMessage); str.length() > 0;str.delete(0,numCols*numRows)) {
+            if(letter > str.length()) letter = 0;
+            for(int col = 0; col < numCols; col++){
+                for(int row = 0; row < numRows; row++){
+                    letterBlock[row][col] = str.substring(letter,letter+1);
+                    letter++;
+                    System.out.println("--------------------");
+                    EncryptorTester.print2DArray(letterBlock);
+                }
+            }
+            for(String[] strs: letterBlock){
+                for(String s: strs){
+                    result.append(s);
+                    System.out.println("result...."+result.toString());
+                }
+            }
+            letterBlock = new String[numRows][numCols];
+        }
         return result.toString();
     }
 
